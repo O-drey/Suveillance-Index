@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mark Gunheim - Surveillance Index</title>
+        <link type="text/css" rel="stylesheet" href="surveillance-index-modif_1.css">
+        <style type="text/css">
+            BODY {overflow-x: hidden;}
+            </style>
+    </head>
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------BODY----------------------------------------------------------------------------------------------------------------------------->
+    
+
+<body>
+
+    <!---------------------------------------------------------------------------------------------------------------------TRAIL-EFFECT--------------------------------------------------------------------------------------------------------------------->
+
+    <script>
+        
+        var trailLength = 8 // The length of trail (8 by default; put more for longer "tail")
+        var path = "https://www.supermicro.com/cds/automation_project/images/red-dot-image.png" // URL of your image
+        
+        var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body //create reference to common "body" across doctypes
+        var i,d = 0
+        
+        function initTrail() { // prepares the script
+            images = new Array() // prepare the image array
+            for (i = 0; i < parseInt(trailLength); i++) {
+                images[i] = new Image()
+                images[i].src = path
+            }
+            storage = new Array() // prepare the storage for the coordinates
+            for (i = 0; i < images.length*3; i++) {
+                storage[i] = 0
+            }
+            for (i = 0; i < images.length; i++) { // make divs for IE and layers for Navigator
+                document.write('<div id="obj' + i + '" style="position: absolute; z-Index: 100; height: 0; width: 0"><img src="' + images[i].src + '"></div>')
+            }
+            trail()
+        }
+        function trail() { // trailing function
+            for (i = 0; i < images.length; i++) { // for every div/layer
+                document.getElementById("obj" + i).style.top = storage[d]+'px' // the Y-coordinate
+                document.getElementById("obj" + i).style.left = + storage[d+1]+'px' // the X-coordinate
+                d = d+2
+            }
+            for (i = storage.length; i >= 2; i--) { // save the coordinate for the div/layer that's behind
+                storage[i] = storage[i-2]
+            }
+            d = 0 // reset for future use
+            var timer = setTimeout("trail()",10) // call recursively 
+        }
+        function processEvent(e) { // catches and processes the mousemove event 
+            if (window.event) { // for IE
+                storage[0] = window.event.y+standardbody.scrollTop+10
+                storage[1] = window.event.x+standardbody.scrollLeft+10
+            } else {
+                storage[0] = e.pageY+12
+                storage[1] = e.pageX+12
+            }
+        }
+        
+            initTrail() 
+            document.onmousemove = processEvent // start capturing
+        
+        //-->
+        </script>
+
+
+    <!---------------------------------------------------------------------------------------------------------------------HEADER--------------------------------------------------------------------------------------------------------------------->
+        <header>
+            <h1>Surveillance Index – Mark Gunheim</h1>
+            <h2>Performing Books #1 – Du 10 au 27 janv. 2018</h2>                
+        </header>
+
+    <!----------------------------------------------------------------------------------------------------------------------MAIN------------------------------------------------------------------------------------------------------------------------->
+        <main>
+            <img class="background" src="images-surveillance-index/Map_of_Paris_by_OpenStreetPosters,_2013.png" alt="plan ville N&B" width="100%" height="100%">
+
+
+
+
+            <!-------------------IMAGES - LEGENDE - DESCRIPTIONS ------------------- ----------------------------------------------------------------------->
+
+
+                <div class="img">
+                    <img class="img5" src="images-surveillance-index/C.jpg" width="850" height="450">
+                     <!--------------<div>
+                       <p class="legend">
+                            Légende à mettre
+                        </p>
+                    </div>------------->
+            </div>
+            <div class="description-1">
+                <p>
+                    LE BAL lance Performing Books. Ce nouveau format, à l'initiative du BAL Books, présente chaque année en janvier une collection de livres réunie par un artiste, un chercheur ou un amateur autour d'une thématique précise. LE BAL se transforme en laboratoire de recherche autour du livre en tant que geste politique pour une réflexion critique sur notre société. La première édition de Performing Books est consacrée à Surveillance Index.
+                </p>
+            </div>
+            <div class="description-2">
+                <p>
+                    Constituée par l’américain Mark Ghuneim, cette collection de plus de 200 livres de photographie explore « notre âge d’or de la surveillance » et ses mécanismes visibles et invisibles. Observateur expert de l’innovation technologique, sensibilisé très tôt aux enjeux de protection de la vie privée, Ghuneim traque tous les procédés licites ou illicites mis en oeuvre par l’État pour surveiller les citoyens. Au début des années 1990, il inventorie notamment toutes les caméras de vidéosurveillance installées dans les rues de New York et établit, avec l’American Civil Liberties Union (ACLU), une carte interactive permettant une traversée de Manhattan non-surveillée. En 2009, six ans avant l’affaire Snowden, Ghuneim commence à collectionner livres d’artistes et de photographes sur « ceux qui surveillent et ceux qui sont surveillés » : hommes, machines, institutions, gouvernements, espions, hackers, voyeurs et égotistes. Dans l’espace du BAL, les 200 livres de la collection Surveillance Index seront mis à disposition du public.
+                </p>
+            </div>
+
+            <div class="img">
+                <img class="img3" src="images-surveillance-index/Double page extraite de Kontee Sein, Katja Stuke, 2008.jpg" width="1000" height="500">
+                <!---------<div class="legend">
+                    <p>
+                        Double page extraite de Kontee Sein, Katja Stuke, 2008.
+                    </p>
+                </div>-------->
+            </div>
+
+            <div class="description-3">
+                <p>
+                    LE BAL lance Performing Books. Ce nouveau format, à l'initiative du BAL Books, présente chaque année en janvier une collection de livres réunie par un artiste, un chercheur ou un amateur autour d'une thématique précise. LE BAL se transforme en laboratoire de recherche autour du livre en tant que geste politique pour une réflexion critique sur notre société. La première édition de Performing Books est consacrée à Surveillance Index.
+                </p>
+            </div>
+
+            <div class="img">
+                <img class="img2" src="images-surveillance-index/LE BAL - Matthieu Samadet.jpg" width="500" height="450">
+                <!------------<div class="legend">
+                    <p>
+                        Le BAL / Matthieu Samadet.
+                    </p>
+                </div>------------>
+            </div>
+            
+            <div class="description-4" width="750" height="250">
+                <p>
+                    « L’iconographie de la surveillance fait partie de notre quotidien et a inspiré une multitude de propositions artistiques » — Mark Ghuneim
+                </p>
+            </div>
+
+            <div class="img">
+                <img class="img4" src="images-surveillance-index/Site inconnu, Noordwijk aan zee, double page extraite de Dutch Landscapes, Mishka Henner, 2011.jpg" width="950" height="450">
+                <!------------<div class="legend">
+                    <p>
+                        "Site inconnu", Noordwijk aan zee, <i>Dutch Landscapes</i>, Mishka Henner, 2011.
+                    </p>
+                </div>----------->
+            </div>
+            
+
+            <div class="img">
+                <img class="img1" src="images-surveillance-index/Voyeurisme à Los Angeles, double page extraite de l’ouvrage Tom, 2013, Doug Rickard.jpg" width="600" height="550">
+                <!------------<div class="legend">
+                    <p>
+                        Voyeurisme à Los Angeles, double page extraite de l’ouvrage Tom, 2013, Doug Rickard.
+                    </p>
+                </div>----------->
+
+            </div>
+            <div class="description-5">
+                <p>
+                    Dans l’esprit d’un véritable « lanceur d’alerte artistique », Ghuneim utilise cette collection et la masse de matériaux visuels qu’elle représente pour susciter prise de conscience et résistance. Quelles libertés individuelles et collectives sacrifions-nous sur l’autel de la sécurité ? Comment nos désirs personnels, intimes et identitaires, façonnent-ils les outils utilisés pour nous contrôler ? Quelles en sont les incidences politiques, sociales, culturelles et juridiques ? Quels comportements pouvons-nous adopter pour disparaître des écrans de vidéo surveillance et des méta données ? Interventions de sociologues, activistes, artistes, penseurs et journalistes programmées dans l’espace du BAL auront pour but de stimuler le débat public autour de ces questions.</br></br>
+                    Mark Ghuneim ouvrira cette édition de Performing Books en présentant la genèse et la teneur activiste de sa collection ainsi que le livre Surveillance Index auto-édité 2017 qui en dresse l’inventaire.
+                </p>
+            </div>
+
+        </main>
+
+
+    
+
+
+
+
+    </body>
+</html>
